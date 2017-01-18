@@ -9,27 +9,34 @@ var hexValues = {
 }
 
 var bases = {
-  binary: function(num) {
+  binaryToDec: function(num) {
     if (num.match(/[^01]/)) {
       return "not binary";
     }else{
-      return convertNumber(num, 2);
+      return decFromConversion(num, 2);
     }
   },
-  ternary: function(num) {
+  ternaryToDec: function(num) {
     if (num.match(/[^012]/)) {
       return "not ternary";
     }else{
-      return convertNumber(num, 3);
+      return decFromConversion(num, 3);
     }
   },
-  hexadecimal: function(num) {
+  hexadecimalToDec: function(num) {
     if (num.match(/[^0-9a-f]/i)) {
       return "not hexadecimal";
     }else{
-      return convertNumber(num, 16);
+      return decFromConversion(num, 16);
     }
-  }
+  },
+  decToBinary: function(num) {
+    return decToConversion(num, 2);
+  },
+  decToTernary: function(num) {
+    return decToConversion(num, 3);
+  },
+  // decToHexadecimal: function(num)
 }
 
 function specialParse(num) {
@@ -40,7 +47,7 @@ function specialParse(num) {
   }
 }
 
-function convertNumber(num, base) {
+function decFromConversion(num, base) {
   var total = 0;
   for (var i = num.length; i > 0; i--){
     var exp = num.length - i;
@@ -50,6 +57,37 @@ function convertNumber(num, base) {
   return total;
 }
 
+function highestExp(num, base) {
+  var exp = 0;
+  for (var i = 0; i >= 0; i++) {
+    if (Math.pow(base,i) > num) {
+      exp = i - 1;
+      break;
+    }
+  }
+  return exp;
+}
+
+
+function decToConversion(num, base) {
+  if (num.match(/[0-9]/)) {
+    var total = "";
+    var num = parseInt(num);
+    var exp = highestExp(num, base);
+    var remainder = num;
+
+    for (i = exp; i >= 0; i--) {
+      var digit = (Math.floor(remainder/Math.pow(base,i))).toString();
+      remainder = remainder % Math.pow(base,i);
+      total += digit;
+    }
+  }
+  return total;
+}
+
+
+
+
 
 
 //front end
@@ -57,13 +95,14 @@ $(function() {
   function showResult(result){
   $("#result").text(result);
   }
-  
+
   $("#converter").submit(function(event) {
       event.preventDefault();
 
       var base = $("#base option:selected").val();
       var input = $("#converter input").val();
       var result = bases[base](input);
+
 
       showResult(result);
     })
