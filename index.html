@@ -2,9 +2,23 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/scripts.js"></script>
+    <title>To Decimal Converter</title>
   </head>
   <body>
-
+    <h1>Convert to a Decimal</h1>
+    <form id="converter">
+      <select id="base">
+        <option value="binary">binary</option>
+        <option value="ternary">ternary</option>
+        <option value="hexadecimal">hexadecimal</option>
+      </select>
+      <input type="text">
+      <button type="submit">convert</button>
+    </form>
+    <div id="result"></div>
   </body>
 </html>
