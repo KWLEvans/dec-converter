@@ -16,7 +16,7 @@ _This is a webpage that accepts a number in binary, trinary, or hexadecimal and 
 
 ## Known Bugs
 
-__
+_No known bugs_
 
 ## Application Specs
 * _The program accepts a single binary digit and return in decimal_
@@ -31,18 +31,6 @@ __
 * _The program accepts any length binary number and converts to decimal._
   * **Example Input:** 10101
   * **Example Output:** 21
-* _The program moves multiple consonants to the end and follows them with "ay"._
-  * **Example Input:** school
-  * **Example Output:** oolschay
-* _The program recognizes words that begin with "qu" and moves the "qu" to the end and follows it with "ay"._
-  * **Example Input:** quick
-  * **Example Output:** ickquay
-* _The program recognizes words that begin with a consonant followed by "qu" and moves the consonant and "qu" to the end and follows it with "ay"._
-  * **Example Input:** squeal
-  * **Example Output:** ealsquay
-* _The program recognizes discrete words and performs translation on each of them._
-  * **Example Input:** This is a working translator
-  * **Example Output:** isThay isay aay orkingway anslatortray
 
 
 ## Support and contact details
